@@ -164,6 +164,41 @@
       opacity: 1;
     }
 
+    /* ─── HOME: SCROLLABLE GALLERY (true image dimensions) ──── */
+    #grid-home.grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-template-columns: none;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 4rem) 5rem;
+    }
+
+    #grid-home .art-card {
+      width: 100%;
+      max-width: 900px;
+      background: none;
+    }
+
+    /* Show each home image at its own natural aspect ratio,
+       the same way .proj-img is displayed on the project page. */
+    #grid-home .art-card .thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: auto;
+      max-height: 80vh;
+      object-fit: contain;
+      opacity: 1;
+    }
+
+    #grid-home .art-card:hover .thumb {
+      transform: none;
+    }
+
+    #grid-home .art-card .card-info {
+      margin-top: 1rem;
+    }
+
     .art-card .card-info {
       padding: .9rem 1rem .85rem;
       background: var(--paper);
@@ -475,7 +510,7 @@
       <div class="divider"></div>
       <p>
         Jodie Bermant is a second generation immigrant from Ecuador who grew up in Northern Virginia and has lived in Boston for the past five years. She is currently earning her BFA in Painting from Massachusetts College of Art and Design,  having transferred from Bunker Hill Community College in the fall of 2025.
-	Bermant’s artistic practice centers on observational painting, working primarily with oil paint in her still lifes and portraits. Materiality is integral to her work and she often builds textured surfaces with paint where her brush strokes remain visible Through direct observation, Bermant explores the quiet intimacy of everyday objects as well as the presence of the human figure to create paintings that are both observational and experimental; inviting viewers to slow down and engage with moments that might otherwise go unnoticed.
+	Bermant’s artistic practice centers on observational painting, working primarily with oil paint in her still lifes and portraits. Materiality is integral to her work and she often builds textured surfaces with paint where her brush strokes remain visible. Through direct observation, Bermant explores the quiet intimacy of everyday objects as well as the presence of the human figure to create paintings that are both observational and experimental; inviting viewers to slow down and engage with moments that might otherwise go unnoticed.
 	Bermant’s inspiration comes from a desire to capture fleeting moments and preserve them through paint. Whether depicting a still life or a live figure, Bermant uses paintings to slow down time and hold onto what is temporary, to transform fleeting experiences into tangible, lasting works.
 
       </p>
@@ -550,11 +585,9 @@ Materiality is a central part of my process, as I work with thick applications o
   </div>
 </section>
 
-<!-- ── SCRIPTS ─────────────────────────────────────────────── -->
 <script>
   /* ── ARTWORK DATA ─────────────────────────────────────────
-     Replace `img` with your actual image paths.
-     placeholder.svg uses a warm-toned box so the grid looks great immediately.
+     Change title, date, size, file path and description here.
   ─────────────────────────────────────────────────────────── */
   const ARTWORKS = [
     {
@@ -562,7 +595,7 @@ Materiality is a central part of my process, as I work with thick applications o
       title: "Aya Huma",
       date: "2025",
       size: "Oil on canvas · 30 × 40 in",
-      img: "artwork/Aya Huma December 2025.jpeg", // ← replace with your image path e.g. "images/work1.jpg"
+      img: "artwork/Aya Huma December 2025.jpeg",
       desc: "Ecuadorian Mask."
     },
     {
@@ -572,6 +605,22 @@ Materiality is a central part of my process, as I work with thick applications o
       size: "Oil on canvas · 30 × 40 in",
       img: "artwork/Lucha Libre READY TO PRINT.jpg",
       desc: "Lucha Libre Mask."
+    },
+    {
+      id: 11,
+      title: "If I Had a Third Shoe",
+      date: "2026",
+      size: "Oil on canvas · 30 × 40 in",
+      img: "artwork/Bush.jpeg",
+      desc: "Painting of Muntadhar al-Zadi, the Iraqi journalist who threw his shoes at President George W. Bush in protest of the United States\u2019 invasion of Iraq in 2003."
+    },
+    {
+      id: 12,
+      title: "Third Leg",
+      date: "2026",
+      size: "Oil on canvas · 25 × 30 in",
+      img: "artwork/ThirdLeg.jpeg",
+      desc: "Naked man who I saw on my hike at Black\u2019s Beach in San Diego, CA."
     },
     {
       id: 3,
@@ -586,7 +635,7 @@ Materiality is a central part of my process, as I work with thick applications o
       title: "Mountain Road I",
       date: "2026",
       size: "Oil on canvas · 26 × 46 in",
-      img: "artwork/Mountain Road April 2026.png",
+      img: "artwork/Mountain road I.jpeg",
       desc: "Part I of a diptych."
     },
     {
@@ -594,7 +643,7 @@ Materiality is a central part of my process, as I work with thick applications o
       title: "Mountain Road II",
       date: "2026",
       size: "Oil on canvas · 26 × 46 in",
-      img: "artwork/Mountain road 2.png",
+      img: "artwork/Mountain Road 2.jpg",
       desc: "Part II of a diptych."
     },
     {
@@ -631,8 +680,8 @@ Materiality is a central part of my process, as I work with thick applications o
     },
     {
       id: 10,
-      title: "Souvenir",
-      date: "2021",
+      title: "Ecuadorian Souvenirs",
+      date: "2024",
       size: "Oil on canvas · 11 × 14 in",
       img: "artwork/IMG_8868.jpg",
       desc: "A collection of souvenirs from Ecuador."
